@@ -37,6 +37,28 @@ body {
   letter-spacing: 0;
 }
 
+.site-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(to bottom, rgba(5, 12, 20, 0.3), rgba(5, 12, 20, 0.82)),
+    linear-gradient(90deg, rgba(5, 12, 20, 0.46), rgba(5, 12, 20, 0.08) 46%, rgba(5, 12, 20, 0.72)),
+    url("assets/world-tree.jpg") center top / cover no-repeat fixed;
+}
+
+.site-backdrop::after {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 12px 12px;
+  content: "";
+  mix-blend-mode: overlay;
+  opacity: 0.28;
+}
+
 a {
   color: inherit;
 }
@@ -247,7 +269,9 @@ h3 {
   min-height: 520px;
   overflow: hidden;
   image-rendering: pixelated;
-  background: #07111d;
+  background:
+    linear-gradient(to bottom, rgba(7, 17, 29, 0.12), rgba(7, 17, 29, 0.78)),
+    rgba(7, 17, 29, 0.28);
   isolation: isolate;
 }
 
@@ -279,17 +303,6 @@ h3 {
       transparent 1px,
       transparent 8px
     );
-}
-
-.world-tree-bg {
-  position: absolute;
-  inset: -4% 0 0 0;
-  z-index: 0;
-  width: 100%;
-  height: 105%;
-  object-fit: cover;
-  filter: saturate(1.22) contrast(1.12) brightness(0.88);
-  transform: scale(1.03);
 }
 
 .tree-aura {
@@ -536,6 +549,10 @@ h3 {
 
 .panel {
   padding: clamp(1rem, 3vw, 1.5rem);
+  background:
+    linear-gradient(135deg, rgba(127, 255, 212, 0.08), rgba(23, 32, 51, 0.72)),
+    rgba(23, 32, 51, 0.76);
+  backdrop-filter: blur(8px);
 }
 
 .panel-title {
@@ -598,7 +615,8 @@ h3 {
   padding: 1.4rem;
   background:
     linear-gradient(135deg, rgba(127, 255, 212, 0.09), transparent 42%),
-    var(--panel);
+    rgba(23, 32, 51, 0.78);
+  backdrop-filter: blur(8px);
   transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
 }
 
@@ -666,6 +684,10 @@ h3 {
 .save-point {
   max-width: 780px;
   padding: clamp(1.5rem, 5vw, 3rem);
+  background:
+    linear-gradient(135deg, rgba(127, 255, 212, 0.1), rgba(23, 32, 51, 0.72)),
+    rgba(23, 32, 51, 0.78);
+  backdrop-filter: blur(8px);
 }
 
 .site-footer {
@@ -756,10 +778,6 @@ h3 {
 
   .pixel-stage {
     min-height: 430px;
-  }
-
-  .world-tree-bg {
-    object-position: center top;
   }
 
   .status-grid,
