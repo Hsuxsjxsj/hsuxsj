@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Hsu 的像素风个人网站，展示个人状态、项目作品、技能树和联系方式。"
+    />
+    <title>Hsu.exe | Pixel Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="scanline" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="回到首页">
+        <span class="brand-mark"></span>
+        <span>HSU.EXE</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="打开导航" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="nav" aria-label="主导航">
+        <a href="#profile">状态</a>
+        <a href="#quests">项目</a>
+        <a href="#skills">技能</a>
+        <a href="#contact">联系</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero section">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">PLAYER 01 / PERSONAL SITE</p>
+          <h1>你好，我是 Hsu，正在把想法做成可运行的界面。</h1>
+          <p class="hero-text">
+            一个适配手机和 PC 的像素风个人网站，用来展示项目、技能、创作记录和联系方式。
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#quests">查看项目</a>
+            <a class="btn btn-ghost" href="#contact">联系我</a>
+          </div>
+        </div>
+
+        <div class="pixel-stage reveal" aria-label="像素风个人站场景">
+          <div class="moon"></div>
+          <div class="stars" aria-hidden="true"></div>
+          <div class="city">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="avatar" aria-hidden="true">
+            <span class="head"></span>
+            <span class="body"></span>
+            <span class="leg left"></span>
+            <span class="leg right"></span>
+          </div>
+          <div class="dialogue">
+            <span class="prompt">&gt;</span>
+            <span id="typed-text">Loading profile...</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="status-band section" id="profile">
+        <div class="section-heading reveal">
+          <p class="eyebrow">STATUS PANEL</p>
+          <h2>当前角色状态</h2>
+        </div>
+        <div class="status-grid">
+          <article class="panel profile-card reveal">
+            <div class="panel-title">ABOUT.ME</div>
+            <p>
+              这里可以放你的真实简介：身份、方向、城市、正在学习或正在构建的东西。第一版先保留可替换文案。
+            </p>
+          </article>
+          <article class="panel stat-card reveal">
+            <span>LV</span>
+            <strong>24</strong>
+            <small>持续升级中</small>
+          </article>
+          <article class="panel stat-card reveal">
+            <span>MODE</span>
+            <strong>BUILD</strong>
+            <small>设计 + 开发</small>
+          </article>
+          <article class="panel stat-card reveal">
+            <span>HP</span>
+            <strong>98%</strong>
+            <small>咖啡加成</small>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="quests">
+        <div class="section-heading reveal">
+          <p class="eyebrow">QUEST LOG</p>
+          <h2>项目关卡</h2>
+        </div>
+        <div class="quest-grid">
+          <article class="quest-card reveal">
+            <div class="quest-top">
+              <span class="quest-icon">01</span>
+              <span class="quest-tag">Web</span>
+            </div>
+            <h3>个人网站</h3>
+            <p>像素风主页、响应式布局、项目展示和联系方式入口。</p>
+            <a href="#contact">了解更多</a>
+          </article>
+          <article class="quest-card reveal">
+            <div class="quest-top">
+              <span class="quest-icon">02</span>
+              <span class="quest-tag">App</span>
+            </div>
+            <h3>工具项目</h3>
+            <p>可以替换成你的效率工具、AI 应用、数据看板或实验作品。</p>
+            <a href="#contact">了解更多</a>
+          </article>
+          <article class="quest-card reveal">
+            <div class="quest-top">
+              <span class="quest-icon">03</span>
+              <span class="quest-tag">Lab</span>
+            </div>
+            <h3>创意实验</h3>
+            <p>放一些视觉、交互、动画或学习笔记，让网站更有个人气味。</p>
+            <a href="#contact">了解更多</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="skill-section section" id="skills">
+        <div class="section-heading reveal">
+          <p class="eyebrow">SKILL TREE</p>
+          <h2>技能树</h2>
+        </div>
+        <div class="skill-tree reveal">
+          <div class="skill-node active">HTML</div>
+          <div class="skill-node active">CSS</div>
+          <div class="skill-node active">JavaScript</div>
+          <div class="skill-node">React</div>
+          <div class="skill-node">Node</div>
+          <div class="skill-node">AI Tools</div>
+          <div class="skill-node">Product</div>
+          <div class="skill-node">Motion</div>
+        </div>
+      </section>
+
+      <section class="contact section" id="contact">
+        <div class="save-point reveal">
+          <p class="eyebrow">SAVE POINT</p>
+          <h2>建立连接</h2>
+          <p>把邮箱、GitHub、社交主页或简历链接放在这里。也可以做成留言板或博客入口。</p>
+          <div class="contact-links">
+            <a class="btn btn-primary" href="mailto:hello@example.com">Email</a>
+            <a class="btn btn-ghost" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>HSU.EXE</span>
+      <span>Built for mobile and desktop</span>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
