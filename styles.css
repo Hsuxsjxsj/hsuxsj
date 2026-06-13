@@ -4,11 +4,12 @@
   --panel-2: #22304a;
   --text: #f7f1d7;
   --muted: #b6c2d8;
-  --accent: #ffd45a;
-  --accent-dark: #2f2403;
+  --accent: #7fffd4;
+  --accent-dark: #06261f;
   --line: #55627c;
-  --green: #5ee6a8;
-  --rose: #ef5d7a;
+  --green: #b7ff6a;
+  --rose: #ff6f91;
+  --gold: #ffd45a;
   --shadow: 0 18px 0 #080b11;
   --pixel: 4px;
 }
@@ -28,8 +29,9 @@ body {
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    radial-gradient(circle at 75% 8%, rgba(255, 212, 90, 0.2), transparent 24rem),
-    linear-gradient(135deg, #0d1320 0%, #141d2d 44%, #0f1724 100%);
+    radial-gradient(circle at 74% 12%, rgba(127, 255, 212, 0.2), transparent 24rem),
+    radial-gradient(circle at 18% 80%, rgba(255, 212, 90, 0.12), transparent 22rem),
+    linear-gradient(135deg, #07111d 0%, #12283a 46%, #09101a 100%);
   background-size: 28px 28px, 28px 28px, auto, auto;
   font-family: "Courier New", "Microsoft YaHei", monospace;
   letter-spacing: 0;
@@ -95,7 +97,7 @@ a {
   background: var(--accent);
   box-shadow:
     6px 0 0 var(--green),
-    0 6px 0 var(--rose),
+    0 6px 0 var(--gold),
     6px 6px 0 var(--text);
 }
 
@@ -245,18 +247,77 @@ h3 {
   min-height: 520px;
   overflow: hidden;
   image-rendering: pixelated;
+  background: #07111d;
+  isolation: isolate;
+}
+
+.pixel-stage::before,
+.pixel-stage::after {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  content: "";
+}
+
+.pixel-stage::before {
   background:
-    linear-gradient(to bottom, #11172a 0 52%, #18233a 52% 100%);
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 10px 10px;
+  mix-blend-mode: overlay;
+  opacity: 0.34;
+}
+
+.pixel-stage::after {
+  background:
+    linear-gradient(to bottom, rgba(5, 11, 19, 0.08), rgba(5, 11, 19, 0.62)),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 1px,
+      transparent 8px
+    );
+}
+
+.world-tree-bg {
+  position: absolute;
+  inset: -4% 0 0 0;
+  z-index: 0;
+  width: 100%;
+  height: 105%;
+  object-fit: cover;
+  filter: saturate(1.22) contrast(1.12) brightness(0.88);
+  transform: scale(1.03);
+}
+
+.tree-aura {
+  position: absolute;
+  top: 28%;
+  left: 50%;
+  z-index: 1;
+  width: 190px;
+  height: 190px;
+  background:
+    radial-gradient(circle, rgba(127, 255, 212, 0.58), transparent 58%),
+    conic-gradient(from 45deg, transparent, rgba(183, 255, 106, 0.28), transparent);
+  filter: blur(1px);
+  transform: translate(-50%, -50%);
+  animation: pulseAura 2.4s steps(4) infinite;
 }
 
 .moon {
   position: absolute;
+  z-index: 3;
   top: 56px;
   right: 60px;
   width: 58px;
   height: 58px;
-  background: var(--accent);
-  box-shadow: 0 0 0 8px rgba(255, 212, 90, 0.16);
+  background: var(--gold);
+  box-shadow:
+    -14px 14px 0 rgba(255, 255, 255, 0.62),
+    0 0 0 8px rgba(255, 212, 90, 0.16);
 }
 
 .stars,
@@ -275,13 +336,47 @@ h3 {
 }
 
 .stars {
+  z-index: 3;
   top: 72px;
   left: 42px;
   animation: floatStars 6s steps(4) infinite;
 }
 
+.runes {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
+
+.runes span {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 18px rgba(127, 255, 212, 0.62);
+  animation: runeFloat 4s steps(4) infinite;
+}
+
+.runes span:nth-child(1) {
+  top: 28%;
+  left: 17%;
+}
+
+.runes span:nth-child(2) {
+  top: 44%;
+  right: 17%;
+  animation-delay: 0.9s;
+}
+
+.runes span:nth-child(3) {
+  top: 17%;
+  left: 48%;
+  animation-delay: 1.7s;
+}
+
 .city {
   position: absolute;
+  z-index: 3;
   right: 0;
   bottom: 88px;
   left: 0;
@@ -295,9 +390,9 @@ h3 {
 .city span {
   display: block;
   background:
-    linear-gradient(90deg, transparent 42%, rgba(255, 212, 90, 0.65) 42% 54%, transparent 54%),
-    #0a0e18;
-  border: 3px solid #2f3e5d;
+    linear-gradient(90deg, transparent 42%, rgba(127, 255, 212, 0.7) 42% 54%, transparent 54%),
+    rgba(10, 14, 24, 0.72);
+  border: 3px solid rgba(127, 255, 212, 0.42);
 }
 
 .city span:nth-child(1) {
@@ -316,8 +411,22 @@ h3 {
   height: 180px;
 }
 
+.cloud-floor {
+  position: absolute;
+  right: -20px;
+  bottom: 70px;
+  left: -20px;
+  z-index: 4;
+  height: 76px;
+  background:
+    linear-gradient(90deg, transparent 0 8%, rgba(247, 241, 215, 0.86) 8% 18%, transparent 18% 24%, rgba(127, 255, 212, 0.72) 24% 37%, transparent 37% 44%, rgba(247, 241, 215, 0.78) 44% 62%, transparent 62% 68%, rgba(183, 255, 106, 0.58) 68% 82%, transparent 82%),
+    linear-gradient(to top, rgba(7, 17, 29, 0.95), transparent);
+  filter: blur(0.4px);
+}
+
 .avatar {
   position: absolute;
+  z-index: 5;
   bottom: 86px;
   left: 54px;
   width: 86px;
@@ -335,7 +444,7 @@ h3 {
   left: 22px;
   width: 42px;
   height: 42px;
-  background: var(--accent);
+  background: var(--gold);
   box-shadow:
     12px 12px 0 #121721,
     22px 12px 0 #121721;
@@ -367,19 +476,51 @@ h3 {
 
 .dialogue {
   position: absolute;
+  z-index: 6;
   right: 26px;
   bottom: 22px;
   left: 26px;
   min-height: 54px;
   padding: 1rem;
   color: var(--green);
-  background: #070a10;
+  background: rgba(7, 10, 16, 0.9);
   border: 3px solid var(--text);
   font-weight: 900;
 }
 
 .prompt {
-  color: var(--accent);
+  color: var(--gold);
+}
+
+.mini-map {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  z-index: 6;
+  display: grid;
+  width: 104px;
+  height: 104px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  padding: 8px;
+  background: rgba(7, 10, 16, 0.78);
+  border: 3px solid var(--text);
+  box-shadow: 5px 5px 0 #000;
+}
+
+.mini-map span {
+  display: block;
+  background: rgba(127, 255, 212, 0.32);
+  border: 2px solid rgba(247, 241, 215, 0.32);
+}
+
+.mini-map span:nth-child(2),
+.mini-map span:nth-child(4) {
+  background: var(--green);
+}
+
+.mini-map span:nth-child(3) {
+  background: var(--gold);
 }
 
 .section-heading {
@@ -410,6 +551,25 @@ h3 {
   line-height: 1.75;
 }
 
+.inventory {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin-top: 1.2rem;
+}
+
+.inventory span {
+  min-height: 54px;
+  display: grid;
+  place-items: center;
+  color: var(--accent-dark);
+  background: var(--accent);
+  border: 3px solid var(--text);
+  box-shadow: 4px 4px 0 #000;
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
 .stat-card {
   min-height: 170px;
 }
@@ -436,6 +596,10 @@ h3 {
 .quest-card {
   min-height: 280px;
   padding: 1.4rem;
+  background:
+    linear-gradient(135deg, rgba(127, 255, 212, 0.09), transparent 42%),
+    var(--panel);
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
 }
 
 .quest-card:hover {
@@ -455,7 +619,7 @@ h3 {
   min-height: 34px;
   place-items: center;
   color: var(--ink);
-  background: var(--accent);
+  background: var(--gold);
   border: 3px solid var(--text);
   font-weight: 900;
 }
@@ -491,7 +655,7 @@ h3 {
 
 .skill-node.active {
   color: var(--accent-dark);
-  background: var(--green);
+  background: var(--accent);
   border-color: var(--text);
 }
 
@@ -534,6 +698,19 @@ h3 {
 @keyframes idle {
   50% {
     transform: translateY(-4px);
+  }
+}
+
+@keyframes pulseAura {
+  50% {
+    opacity: 0.68;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+}
+
+@keyframes runeFloat {
+  50% {
+    transform: translateY(-12px) rotate(45deg);
   }
 }
 
@@ -581,6 +758,10 @@ h3 {
     min-height: 430px;
   }
 
+  .world-tree-bg {
+    object-position: center top;
+  }
+
   .status-grid,
   .quest-grid,
   .skill-tree {
@@ -622,6 +803,15 @@ h3 {
     right: 14px;
     left: 14px;
     font-size: 0.86rem;
+  }
+
+  .mini-map {
+    width: 82px;
+    height: 82px;
+  }
+
+  .inventory {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .btn {
